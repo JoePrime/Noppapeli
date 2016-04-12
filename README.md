@@ -4,4 +4,5 @@ Noppapeli jossa tietokone heitt채채 kahta kuusisivuista noppaa ja pelaaja yritt�
 1.0 Ensimm채inen versio joka sis채lt채채 kaiken vaaditun.
 
 2.0 Koodi kirjoitettu uudelleen ja lis채tty vinkit.
+
 2.1 Lis채tty puuttuva ominaisuus: tuloksen kertominen.
