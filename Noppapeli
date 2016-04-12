@@ -1,0 +1,52 @@
+
+/*
+Noppapeli (c) Joel Enwald 2016
+ */
+package noppapeli2;
+
+import java.util.*;
+
+public class Noppapeli2 {
+
+    public static void main(String[] args) {
+        System.out.println("Tervetuloa noppapeliin!" + "\n" // Esittelyteksti
+                + "Tietokone heittää kahta kuusisivuista noppaa." + "\n");
+        Scanner lukija = new Scanner(System.in);
+        while (true) {                                                                              // Emolooppi
+            System.out.println("Paina 'x' lopettaaksesi ohjelman, tai 'v' nähdäksesi vinkkejä.");   // Perusviestit
+            System.out.print("Arvaa silmälukujen summa: ");
+            String syote = lukija.nextLine();
+            if (syote.equals("x")) {                                                                // 1 Lopetetaanko ohjelma? Jos, niin poistutaan loopista
+                System.out.println("Kiitos pelaamisesta!");
+                break;
+            } else if (syote.equals("v")) {                                                         // 2 Jos syöte on "v", näytetään vinkkejä.
+                System.out.println("\nNoppien yhteenlaskettu silmäluku on aina välillä 2-12.");
+                System.out.print("Paina 'v' nähdäksesi toisen vinkin tai mitä tahansa muuta jatkaaksesi pelaamista: ");
+                String vSyote = lukija.nextLine();                                                  // Kysytään halutaanko jatkaa vinkkien katselua.
+                if (vSyote.equals("v")) {                                                           // 2.1
+                    System.out.println("\n7 on todennäköisin tulos.");
+                    continue;                                                                       // Siirrytään takaisin pelin alkuun
+                } else {                                                                            // 2.2
+                    System.out.println("");
+                    continue;
+                }
+            }
+            int arvaus = 0;
+            try {                                                                                   // 3 Jos syote on kokonaisluku, laitetaan se muistiin
+                arvaus = Integer.parseInt(syote);
+            } catch (NumberFormatException exp) {                                                   // 4 Jos ei ole, annetaan virheilmoitus ja aletaan alusta.
+                System.out.println("\nJotakin meni pieleen." + "\n"
+                        + "Varmista että kirjoitit kokonaisluvun, ja ettei se ole liian suuri." + "\n");
+                continue;
+            }
+            int noppa1 = (int) Math.ceil(Math.random() * 6);                                        // Heitetään noppia ja tarkastetaan arvauksen oikeellisuus
+            int noppa2 = (int) Math.ceil(Math.random() * 6);
+            boolean oikein = (noppa1 + noppa2 == arvaus);
+            if (oikein) {                                                                           // Annetaan palautetta sen mukaan oliko arvaus oikein vai ei
+                System.out.println("Oikea vastaus oli " + (noppa1 + noppa2) + ". Oikein arvattu!\n");       // Aloitetaan peli alusta.
+            } else {
+                System.out.println("Ikävä kyllä vastasit väärin. Oikea vastaus oli " + (noppa1 + noppa2) + "." + "\n");
+            }
+        }
+    }
+}
